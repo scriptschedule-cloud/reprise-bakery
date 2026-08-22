@@ -1,861 +1,299 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reprise Bakery | Macro-Balanced Cheesecakes</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --reprise-brown: #4A372A;
-            --reprise-terracotta: #C97859;
-            --reprise-sage: #8D9675;
-            --reprise-caramel: #C89B68;
-            --reprise-cream: #F7F0E4;
-            --reprise-white: #FFFDF8;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            color: var(--reprise-brown);
-            background: var(--reprise-white);
-            line-height: 1.6;
-        }
-
-        /* HEADER */
-        header {
-            background: var(--reprise-white);
-            padding: 1.2rem 3rem;
-            border-bottom: 1px solid var(--reprise-cream);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 50px;
-            width: auto;
-        }
-
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--reprise-brown);
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--reprise-terracotta);
-        }
-
-        .social {
-            display: flex;
-            gap: 1rem;
-            margin-left: 2rem;
-            padding-left: 1.5rem;
-            border-left: 1px solid var(--reprise-brown);
-            font-size: 1rem;
-        }
-
-        .social a {
-            text-decoration: none;
-            color: var(--reprise-brown);
-            transition: color 0.3s;
-        }
-
-        /* HERO */
-        .hero {
-            background: var(--reprise-cream);
-            padding: 4rem 3rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .hero-left {
-            padding-right: 2rem;
-        }
-
-        .hero-logo {
-            width: 100px;
-            margin-bottom: 2rem;
-        }
-
-        .hero-logo img {
-            width: 100%;
-        }
-
-        .hero-headline {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            font-weight: 600;
-            color: var(--reprise-brown);
-            line-height: 1;
-            margin-bottom: 0;
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-        }
-
-        .hero-tagline {
-            font-family: 'Caveat', cursive;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--reprise-terracotta);
-            margin-bottom: 1.2rem;
-            display: block;
-        }
-
-        .divider {
-            width: 60px;
-            height: 1px;
-            background: var(--reprise-brown);
-            margin: 1.2rem 0;
-        }
-
-        .heart-divider {
-            color: var(--reprise-terracotta);
-            font-size: 1rem;
-            text-align: center;
-            margin: 0.8rem 0;
-        }
-
-        .hero-description {
-            font-size: 0.9rem;
-            line-height: 1.7;
-            color: var(--reprise-brown);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 0.8rem;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            text-decoration: none;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            border: none;
-            border-radius: 2px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .btn-sage {
-            background: var(--reprise-sage);
-            color: white;
-        }
-
-        .btn-sage:hover {
-            background: #7a8567;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--reprise-brown);
-            border: 1.5px solid var(--reprise-brown);
-        }
-
-        .btn-outline:hover {
-            background: var(--reprise-brown);
-            color: white;
-        }
-
-        .btn-terracotta {
-            background: var(--reprise-terracotta);
-            color: white;
-        }
-
-        .btn-terracotta:hover {
-            background: #b86845;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: auto;
-            border-radius: 3px;
-            margin-bottom: 1.5rem;
-        }
-
-        .quote-box {
-            background: white;
-            border: 2px solid var(--reprise-brown);
-            padding: 1.5rem;
-            border-radius: 3px;
-            text-align: center;
-        }
-
-        .quote-box p {
-            font-size: 0.85rem;
-            color: var(--reprise-brown);
-            margin-bottom: 0.3rem;
-            line-height: 1.5;
-        }
-
-        .quote-highlight {
-            font-family: 'Caveat', cursive;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--reprise-terracotta);
-        }
-
-        /* FEATURES */
-        .features {
-            background: white;
-            padding: 3.5rem 3rem;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1.8rem;
-        }
-
-        .feature {
-            text-align: center;
-            padding: 2rem 1.2rem;
-            background: var(--reprise-cream);
-            border-radius: 3px;
-        }
-
-        .feature-icon {
-            width: 55px;
-            height: 55px;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .feature-icon svg {
-            width: 55px;
-            height: 55px;
-            stroke: var(--reprise-terracotta);
-            fill: none;
-        }
-
-        .feature h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            color: var(--reprise-brown);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .feature p {
-            font-size: 0.8rem;
-            color: var(--reprise-sage);
-            margin-bottom: 1.2rem;
-            line-height: 1.5;
-        }
-
-        .feature .btn {
-            font-size: 0.65rem;
-            padding: 0.6rem 1rem;
-        }
-
-        /* FLAVORS */
-        .flavors {
-            background: var(--reprise-cream);
-            padding: 4rem 3rem;
-            text-align: center;
-        }
-
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.8rem;
-            color: var(--reprise-brown);
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-
-        .section-divider {
-            width: 70px;
-            height: 1px;
-            background: var(--reprise-terracotta);
-            margin: 0 auto 1.5rem;
-            position: relative;
-        }
-
-        .section-divider::before {
-            content: "♥";
-            position: absolute;
-            top: -11px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--reprise-terracotta);
-            font-size: 0.9rem;
-        }
-
-        .section-description {
-            font-size: 0.9rem;
-            color: var(--reprise-sage);
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-        }
-
-        .flavors-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto 2rem;
-        }
-
-        .flavor-card {
-            text-align: center;
-            position: relative;
-        }
-
-        .flavor-card:hover img {
-            transform: scale(1.02);
-        }
-
-        .flavor-image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 3px;
-            margin-bottom: 0.8rem;
-            transition: transform 0.3s;
-        }
-
-        .new-badge {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: var(--reprise-sage);
-            color: white;
-            padding: 0.25rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.6rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .flavor-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem;
-            color: var(--reprise-brown);
-            margin-bottom: 0.2rem;
-            font-weight: 600;
-        }
-
-        .flavor-subtitle {
-            font-family: 'Caveat', cursive;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--reprise-terracotta);
-            margin-bottom: 0.3rem;
-        }
-
-        .flavor-description {
-            font-size: 0.8rem;
-            color: var(--reprise-sage);
-            line-height: 1.4;
-        }
-
-        /* STORY */
-        .story {
-            background: white;
-            padding: 4rem 3rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .story-image {
-            width: 100%;
-            height: auto;
-            border-radius: 3px;
-        }
-
-        .story-content h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.4rem;
-            color: var(--reprise-brown);
-            margin-bottom: 0.2rem;
-            font-weight: 600;
-        }
-
-        .story-tagline {
-            font-family: 'Caveat', cursive;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--reprise-terracotta);
-            margin-bottom: 1.2rem;
-        }
-
-        .story-content p {
-            font-size: 0.9rem;
-            color: var(--reprise-brown);
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .benefits {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            margin: 1.5rem 0;
-        }
-
-        .benefit {
-            display: flex;
-            gap: 0.8rem;
-            align-items: flex-start;
-            font-size: 0.85rem;
-            color: var(--reprise-brown);
-        }
-
-        .benefit-icon {
-            color: var(--reprise-terracotta);
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        /* CTA */
-        .cta {
-            background: var(--reprise-sage);
-            color: white;
-            padding: 3.5rem 3rem;
-            text-align: center;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .cta-left h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.6rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            line-height: 1.1;
-        }
-
-        .cta-left p {
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.95;
-            line-height: 1.6;
-        }
-
-        .cta-image {
-            width: 100%;
-            height: auto;
-            border-radius: 3px;
-        }
-
-        /* FOOTER */
-        footer {
-            background: var(--reprise-cream);
-            padding: 3rem;
-        }
-
-        .footer-wrapper {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-logo {
-            width: 70px;
-            margin-bottom: 1rem;
-        }
-
-        .footer-logo img {
-            width: 100%;
-        }
-
-        .footer-section h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.95rem;
-            color: var(--reprise-brown);
-            margin-bottom: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section li {
-            margin-bottom: 0.6rem;
-        }
-
-        .footer-section a {
-            text-decoration: none;
-            color: var(--reprise-brown);
-            font-size: 0.85rem;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: var(--reprise-terracotta);
-        }
-
-        .footer-description {
-            font-size: 0.8rem;
-            color: var(--reprise-sage);
-            margin-bottom: 0.8rem;
-            line-height: 1.5;
-        }
-
-        .email-input {
-            width: 100%;
-            padding: 0.65rem;
-            border: 1px solid var(--reprise-brown);
-            background: white;
-            font-size: 0.8rem;
-            border-radius: 2px;
-            font-family: 'DM Sans', sans-serif;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid var(--reprise-brown);
-            padding-top: 1.5rem;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--reprise-sage);
-        }
-
-        @media (max-width: 1024px) {
-            .hero {
-                grid-template-columns: 1fr;
-            }
-
-            .features {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .flavors-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .story {
-                grid-template-columns: 1fr;
-            }
-
-            .cta {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-wrapper {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .features {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .flavors-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-wrapper {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-headline {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reprise Bakery | A Taste Worth Repeating</title>
+<meta name="description" content="Small-batch desserts made from scratch — cheesecakes full-fat and indulgent, or macro-balanced and high-protein. You choose. Have the dessert.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- Link preview for Instagram, Facebook, iMessage etc. og:url and og:image are
+     absolute because most platforms ignore relative paths. If the site moves to
+     its own domain, update the host in both. -->
+<meta property="og:url" content="https://scriptschedule-cloud.github.io/reprise-bakery/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reprise Bakery">
+<meta property="og:title" content="Reprise Bakery | A Taste Worth Repeating">
+<meta property="og:description" content="Small-batch desserts made from scratch — cheesecakes full-fat and indulgent, or macro-balanced and high-protein. You choose. Have the dessert.">
+<meta property="og:image" content="https://scriptschedule-cloud.github.io/reprise-bakery/assets/hero-cheesecake.jpg">
+<meta property="og:image:alt" content="A Reprise Bakery cheesecake">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-    <!-- HEADER -->
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <img src="assets/reprise-logo.png" alt="Reprise Bakery">
-            </div>
-            <nav>
-                <a href="#home">Home</a>
-                <a href="#cheesecakes">Cheesecakes</a>
-                <a href="#about">About</a>
-                <a href="#ordering">Ordering</a>
-                <a href="#gallery">Gallery</a>
-                <a href="#contact">Contact</a>
-                <div class="social">
-                    <a href="#instagram">📷</a>
-                    <a href="#email">✉️</a>
-                </div>
-            </nav>
+
+<!-- ============ SVG sprite ============ -->
+<svg style="display:none" aria-hidden="true">
+  <!-- vector line art shipped with the mock: assets/icons/*.svg -->
+  <symbol id="i-heart" viewBox="18 7 85 81">
+    <path class="icon" d="M60 83C47 71 23 52 23 33 23 20 33 12 44 12c8 0 14 5 16 12 4-7 9-12 17-12 12 0 21 8 21 21 0 19-25 38-38 50Z"/>
+  </symbol>
+  <symbol id="i-whisk-heart" viewBox="0 0 200 160">
+    <g class="icon">
+      <path d="M35 110 L78 55"/><path d="M75 58C93 37 113 40 128 55 111 67 96 82 80 99"/>
+      <path d="M86 49C98 56 107 63 114 74"/><path d="M97 44C111 50 121 59 128 69"/>
+      <path d="M48 122c5-10 16-10 22-1 6-10 18-7 18 3 0 10-12 19-19 25-7-6-21-14-21-27Z"/>
+    </g>
+  </symbol>
+  <symbol id="i-stand" viewBox="0 0 200 160">
+    <g class="icon">
+      <ellipse cx="100" cy="55" rx="42" ry="11"/><path d="M58 55V84c0 11 84 11 84 0V55"/>
+      <path d="M87 95V113"/><path d="M113 95V113"/><ellipse cx="100" cy="120" rx="47" ry="9"/>
+    </g>
+  </symbol>
+  <symbol id="i-bowl" viewBox="0 0 200 160">
+    <g class="icon">
+      <path d="M52 79H148c-5 33-24 49-48 49S57 112 52 79Z"/>
+      <path d="M98 77 L132 41"/><path d="M107 71c11-14 23-17 34-9"/>
+      <path d="M84 95c5-9 15-9 20-1 6-10 18-7 18 3 0 12-13 19-18 25-7-6-20-14-20-27Z"/>
+      <path d="M66 41c5-11 16-12 22-2 6-11 19-9 22 2-2 12-15 20-22 26-8-6-21-13-22-26Z"/>
+      <path d="M119 28c4-9 13-8 17 0 5-9 15-7 16 2-2 9-11 14-16 18-5-4-16-9-17-20Z"/>
+    </g>
+  </symbol>
+  <symbol id="i-heart-lg" viewBox="0 0 200 160">
+    <path class="icon" d="M100 137C80 118 43 89 43 57 43 38 56 27 72 27c13 0 23 8 28 20 5-12 15-20 28-20 17 0 30 11 30 30 0 32-38 61-58 80Z"/>
+  </symbol>
+  <symbol id="i-bag" viewBox="0 0 200 160">
+    <g class="icon">
+      <path d="M62 51H138l6 86H56Z"/><path d="M78 51c0-22 10-32 22-32s22 10 22 32"/>
+      <path d="M83 83c5-10 15-10 20-1 6-10 18-7 18 4 0 12-12 19-18 25-7-6-20-14-20-28Z"/>
+    </g>
+  </symbol>
+  <symbol id="i-story-bowl" viewBox="0 0 120 100">
+    <g class="icon"><path d="M20 44H91c-4 29-18 40-35 40S25 73 20 44Z"/><path d="M57 41 L82 17"/></g>
+  </symbol>
+  <symbol id="i-story-heart" viewBox="0 0 120 100">
+    <path class="icon" d="M60 83C47 71 23 52 23 33 23 20 33 12 44 12c8 0 14 5 16 12 4-7 9-12 17-12 12 0 21 8 21 21 0 19-25 38-38 50Z"/>
+  </symbol>
+  <symbol id="i-story-whisk" viewBox="0 0 120 100">
+    <g class="icon">
+      <path d="M17 79 L49 46"/><path d="M47 48c12-15 27-13 37-2-13 10-24 22-34 32"/>
+      <path d="M57 40c8 4 14 10 19 17"/><path d="M67 36c9 4 15 10 20 16"/>
+      <path d="M21 84c3-6 10-6 14 0 4-7 12-5 12 2 0 6-7 11-12 14-4-3-14-8-14-16Z"/>
+    </g>
+  </symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24">
+    <g class="icon">
+      <rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"/>
+      <circle cx="12" cy="12" r="4.1"/>
+      <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+    </g>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24">
+    <g class="icon">
+      <rect x="2.6" y="5" width="18.8" height="14" rx="2.2"/>
+      <path d="m3.4 6.6 8.6 6.6 8.6-6.6"/>
+    </g>
+  </symbol>
+</svg>
+
+<!-- ============ header ============ -->
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="Reprise Bakery — home"><span class="badge"></span></a>
+    <ul class="navlinks">
+      <li><a class="active" href="#top">Home</a></li>
+      <li><a href="cheesecakes.html">Cheesecakes</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#order">Ordering</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="#order">Contact</a></li>
+    </ul>
+    <div class="nav-icons">
+      <a href="https://instagram.com/reprise.bakery" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a>
+      <a href="mailto:reprisebakery@gmail.com" aria-label="Email us"><svg><use href="#i-mail"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ hero ============ -->
+<section class="hero">
+  <div class="hero-media" role="img" aria-label="A golden cheesecake on a cake stand with one slice cut"></div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <h1><span class="l1">Have</span><span class="l2">the dessert.</span></h1>
+      <div class="rule"><svg><use href="#i-heart"/></svg></div>
+      <p class="hero-sub">That moment when everyone orders dessert and you almost do — then you stop yourself? We fixed that.</p>
+      <a class="btn btn-sage" href="#flavors">See the Cheesecakes</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <span class="heart"><svg><use href="#i-heart"/></svg></span>
+    <p>Cheesecakes made full-fat and indulgent, or macro-balanced and high-protein. You choose.
+      <span class="sig">That's Reprise.</span></p>
+  </div>
+</section>
+
+<!-- ============ feature strip ============ -->
+<section class="strip">
+  <article>
+    <span class="ico"><svg><use href="#i-whisk-heart"/></svg></span>
+    <h3>Worth Repeating</h3>
+    <p>Signature flavors you'll crave again and again.</p>
+    <a class="tinylink" href="#flavors">See Featured Flavors</a>
+  </article>
+  <article>
+    <span class="ico"><svg><use href="#i-stand"/></svg></span>
+    <h3>Pick Your Favorite</h3>
+    <p>The full menu, made to order.</p>
+    <a class="tinylink" href="cheesecakes.html">View the Menu</a>
+  </article>
+  <article>
+    <span class="ico"><svg><use href="#i-bowl"/></svg></span>
+    <h3>Made From Scratch.<br>Made to Share.</h3>
+    <p>Quality ingredients, time and love in every bite.</p>
+    <a class="tinylink" href="about.html">Our Story</a>
+  </article>
+  <article>
+    <span class="ico"><svg><use href="#i-heart-lg"/></svg></span>
+    <h3>Something Worth<br>Celebrating</h3>
+    <p>Birthdays, gatherings, holidays and more.</p>
+    <a class="tinylink" href="#order">Special Orders</a>
+  </article>
+  <article>
+    <span class="ico"><svg><use href="#i-bag"/></svg></span>
+    <h3>Ready for Dessert?</h3>
+    <p>Ordering is easy. Pickup or local delivery.</p>
+    <a class="tinylink" href="#order">How to Order</a>
+  </article>
+</section>
+
+<!-- ============ flavors ============ -->
+<section class="section flavors" id="flavors">
+  <div class="container">
+    <div class="section-head">
+      <h2>Worth Repeating</h2>
+      <div class="rule"><svg><use href="#i-heart"/></svg></div>
+      <p class="kicker">A few customer favorites.</p>
+    </div>
+
+    <div class="flavor-grid">
+      <article class="flavor">
+        <div class="shot"><img src="assets/classic-new-york.jpg" alt="Classic New York cheesecake"></div>
+        <h3>Classic</h3>
+        <div class="script">New York</div>
+        <p>Creamy, rich and perfectly simple.</p>
+      </article>
+      <article class="flavor">
+        <div class="shot">
+          <img src="assets/salted-caramel.jpg" alt="Salted caramel cheesecake">
+          <span class="tag-seasonal">Seasonal</span>
         </div>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero" id="home">
-        <div class="hero-left">
-            <div class="hero-logo">
-                <img src="assets/reprise-logo.png" alt="Reprise Bakery Logo">
-            </div>
-            <h1 class="hero-headline">Have</h1>
-            <span class="hero-tagline">the dessert.</span>
-            <div class="divider"></div>
-            <p class="hero-description">That moment when everyone orders dessert and you almost do? Then you stop yourself? We fixed that. Reprise creates macro-balanced cheesecakes you can actually enjoy without the debate.</p>
-            <div class="hero-buttons">
-                <a href="#cheesecakes" class="btn btn-sage">See the Cheesecakes</a>
-                <a href="#ordering" class="btn btn-outline">Start an Order</a>
-            </div>
+        <h3>Salted</h3>
+        <div class="script">Caramel</div>
+        <p>Smooth caramel with a hint of sea salt.</p>
+      </article>
+      <article class="flavor">
+        <div class="shot">
+          <img src="assets/cookies-cream.jpg" alt="Cookies and cream cheesecake">
+          <span class="tag-seasonal">Seasonal</span>
         </div>
-        <div class="hero-right">
-            <img src="assets/hero-cheesecake.png" alt="Cheesecake" class="hero-image">
-            <div class="quote-box">
-                <p>No artificial ingredients.</p>
-                <p>No guilt. No compromise.</p>
-                <div class="heart-divider">♥</div>
-                <p><span class="quote-highlight">Have it all.</span></p>
-            </div>
+        <h3>Cookies &amp;</h3>
+        <div class="script">Cream</div>
+        <p>Creamy vanilla with chocolate cookie pieces.</p>
+      </article>
+      <article class="flavor">
+        <div class="shot">
+          <img src="assets/biscoff-cookie-butter.jpg" alt="Biscoff cookie butter cheesecake">
+          <span class="tag">New</span>
         </div>
-    </section>
-
-    <!-- FEATURES -->
-    <section class="features">
-        <div class="feature">
-            <div class="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90">
-                    <g fill="none" stroke="#C97859" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 66 L55 30"/><path d="M53 32 C68 18,82 20,91 31 C78 39,68 49,56 60"/>
-                        <path d="M58 29 C66 33,72 38,77 45"/><path d="M64 25 C74 29,81 34,86 40"/>
-                        <path d="M31 73 C34 67,41 66,45 71 C50 64,58 67,58 73 C58 79,51 83,45 87 C40 83,31 79,31 73 Z"/>
-                    </g>
-                </svg>
-            </div>
-            <h3>Worth Repeating</h3>
-            <p>Signature flavors you'll crave again and again.</p>
-            <a href="#cheesecakes" class="btn btn-outline">See Featured Flavors</a>
+        <h3>Biscoff</h3>
+        <div class="script">Cookie Butter</div>
+        <p>Biscoff cookie butter in every bite.</p>
+      </article>
+      <article class="flavor">
+        <div class="shot">
+          <!-- framed left of the badge burned into this shot; the .tag below replaces it -->
+          <img class="shift-left" src="assets/thai-tea.jpg" alt="Thai tea cheesecake">
+          <span class="tag">New</span>
         </div>
+        <h3>Thai</h3>
+        <div class="script">Tea</div>
+        <p>Thai tea flavor with a smooth, creamy finish.</p>
+      </article>
+    </div>
 
-        <div class="feature">
-            <div class="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90">
-                    <g fill="none" stroke="#C97859" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <ellipse cx="60" cy="31" rx="25" ry="6"/><path d="M35 31 L35 48 C35 54 85 54 85 48 L85 31"/>
-                        <path d="M53 54 L53 66"/><path d="M67 54 L67 66"/><ellipse cx="60" cy="69" rx="27" ry="5"/>
-                    </g>
-                </svg>
-            </div>
-            <h3>Pick Your Favorite</h3>
-            <p>Full menu of cheesecakes made to order.</p>
-            <a href="#cheesecakes" class="btn btn-outline">View The Menu</a>
-        </div>
+    <p class="promise">All made full-fat and indulgent. Most also available in macro-balanced,
+      high-protein, no-sugar options — because Reprise makes cheesecakes that let you have it all:
+      the taste, the texture, the joy. No compromise.</p>
 
-        <div class="feature">
-            <div class="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90">
-                    <g fill="none" stroke="#C97859" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M28 42 H92 C88 65 75 73 60 73 C45 73 32 65 28 42 Z"/>
-                        <path d="M59 40 L80 19"/><path d="M64 38 C71 29 78 27 84 31"/>
-                        <path d="M49 55 C52 49,58 49,61 54 C65 48,72 50,72 56 C72 63,64 67,61 70 C57 67,49 62,49 55 Z"/>
-                        <path d="M42 18 C46 12,52 13,55 18 C58 12,65 13,67 19 C66 25,59 29,55 32 C51 29,43 25,42 18 Z"/>
-                    </g>
-                </svg>
-            </div>
-            <h3>Made From Scratch.</h3>
-            <p>Quality ingredients, time and love in every bite.</p>
-            <a href="#about" class="btn btn-outline">Our Story</a>
-        </div>
+    <div class="cta-row"><a class="btn btn-sage" href="cheesecakes.html">View Full Menu</a></div>
+  </div>
+</section>
 
-        <div class="feature">
-            <div class="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90">
-                    <path d="M60 76 C49 66,26 49,26 31 C26 19,35 12,45 12 C53 12,58 17,60 23 C63 17,68 12,76 12 C87 12,95 19,95 31 C95 49,72 66,60 76 Z" fill="none" stroke="#C97859" stroke-width="2.5" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <h3>Something Worth<br>Celebrating</h3>
-            <p>Birthdays, gatherings, holidays and more.</p>
-            <a href="#contact" class="btn btn-outline">Special Orders</a>
-        </div>
+<!-- ============ story ============ -->
+<section class="story" id="story">
+  <div class="container story-grid">
+    <div class="story-photo"><img src="assets/story-jamie.jpg" alt="Jamie in the Reprise Bakery kitchen"></div>
+    <div class="story-copy">
+      <h2><span class="l1">Made from scratch.</span><span class="l2">Made with heart.</span></h2>
+      <div class="rule rule--left"><svg><use href="#i-heart"/></svg></div>
+      <p>Baking has always been my happy place — the thing that centers me when life feels
+        overwhelming. I wanted to create something that brings other people that same feeling.
+        Reprise is cheesecakes made with care: full-fat for pure indulgence, or macro-balanced
+        high-protein for those who want both. You shouldn't have to choose between what you love
+        and the person you want to be. Have the dessert. You deserve it.</p>
+      <a class="btn btn-terra" href="about.html">Our Story</a>
+    </div>
+    <div class="story-points">
+      <ul>
+        <li><span class="ico"><svg><use href="#i-story-bowl"/></svg></span><span>Real ingredients<br>never shortcuts.</span></li>
+        <li><span class="ico"><svg><use href="#i-story-heart"/></svg></span><span>Small batches<br>big flavor.</span></li>
+        <li><span class="ico"><svg><use href="#i-story-whisk"/></svg></span><span>Baked with care<br>served with pride.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-        <div class="feature">
-            <div class="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90">
-                    <g fill="none" stroke="#C97859" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M35 29 H85 L89 76 H31 Z"/><path d="M45 29 C45 16 52 10 60 10 C68 10 75 16 75 29"/>
-                        <path d="M49 49 C52 43,58 43,61 48 C65 42,72 44,72 50 C72 57,64 61,61 64 C57 61,49 56,49 49 Z"/>
-                    </g>
-                </svg>
-            </div>
-            <h3>Ready for Dessert?</h3>
-            <p>Ordering is easy. Pickup or local delivery.</p>
-            <a href="#ordering" class="btn btn-outline">How to Order</a>
-        </div>
-    </section>
+<!-- ============ order band ============ -->
+<section class="band" id="order">
+  <div class="band-media" role="img" aria-label="A slice of Reprise cheesecake on a plate"></div>
+  <div class="container band-inner">
+    <h2><span class="l1">Life is better</span><span class="l2">with dessert.</span></h2>
+    <div>
+      <p>Whether it's a Tuesday treat or something worth celebrating,
+        I'd love to make it sweet for you.</p>
+      <a class="btn btn-terra" href="mailto:reprisebakery@gmail.com">Place an Order</a>
+    </div>
+  </div>
+</section>
 
-    <!-- FLAVORS -->
-    <section class="flavors" id="cheesecakes">
-        <h2 class="section-title">Worth Repeating</h2>
-        <div class="section-divider"></div>
-        <p class="section-description">A few customer favorites.</p>
+</main>
 
-        <div class="flavors-grid">
-            <div class="flavor-card">
-                <img src="assets/real-coconut.jpg" alt="Classic" class="flavor-image">
-                <h3>Classic</h3>
-                <span class="flavor-subtitle">New York</span>
-                <p class="flavor-description">Creamy, rich and perfectly simple.</p>
-            </div>
-            <div class="flavor-card">
-                <img src="assets/real-espresso.jpg" alt="Salted Caramel" class="flavor-image">
-                <h3>Salted</h3>
-                <span class="flavor-subtitle">Caramel</span>
-                <p class="flavor-description">Smooth caramel with a hint of salt.</p>
-            </div>
-            <div class="flavor-card">
-                <img src="assets/real-matcha.jpg" alt="Cookies & Cream" class="flavor-image">
-                <h3>Cookies &</h3>
-                <span class="flavor-subtitle">Cream</span>
-                <p class="flavor-description">Creamy vanilla with chocolate cookie pieces.</p>
-            </div>
-            <div class="flavor-card">
-                <img src="assets/biscoff-cookie-butter.png" alt="Biscoff" class="flavor-image">
-                <h3>Biscoff</h3>
-                <span class="flavor-subtitle">Cookie Butter</span>
-                <p class="flavor-description">Biscoff cookie butter in every bite.</p>
-            </div>
-            <div class="flavor-card">
-                <img src="assets/thai-tea.png" alt="Thai Tea" class="flavor-image">
-                <span class="new-badge">New</span>
-                <h3>Thai</h3>
-                <span class="flavor-subtitle">Tea</span>
-                <p class="flavor-description">Thai tea flavor with a smooth, creamy finish.</p>
-            </div>
-        </div>
+<!-- ============ footer ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><span class="badge"></span></div>
+      <div>
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="cheesecakes.html">Cheesecakes</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#order">Ordering</a></li>
+          <li><a href="#order">Special Orders</a></li>
+          <li><a href="#order">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Along</h4>
+        <ul class="contact-list">
+          <li><span class="ico"><svg><use href="#i-instagram"/></svg></span>
+              <a href="https://instagram.com/reprise.bakery">@reprise.bakery</a></li>
+          <li><span class="ico"><svg><use href="#i-mail"/></svg></span>
+              <a href="mailto:reprisebakery@gmail.com">reprisebakery@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="colophon">&copy; 2026 Reprise Bakery &nbsp;|&nbsp; A Taste Worth Repeating.</p>
+  </div>
+</footer>
 
-        <a href="#ordering" class="btn btn-sage">View Full Menu</a>
-    </section>
-
-    <!-- STORY -->
-    <section class="story" id="about">
-        <img src="assets/real-mixing.jpg" alt="Baking" class="story-image">
-        <div class="story-content">
-            <h2>Made From Scratch.<br>Made to Share.</h2>
-            <span class="story-tagline">Made with heart.</span>
-            <p>Reprise is a new chapter built around something simple: making dessert people actually want to say yes to. Every cheesecake is made in small batches with thoughtfully chosen ingredients, a little curiosity, and a lot of care.</p>
-            <p class="story-secondary">One slice turns into two. One order turns into another. That's Reprise.</p>
-            
-            <div class="benefits">
-                <div class="benefit">
-                    <div class="benefit-icon">✓</div>
-                    <div>Real ingredients never shortcuts.</div>
-                </div>
-                <div class="benefit">
-                    <div class="benefit-icon">✓</div>
-                    <div>Small batches big flavor.</div>
-                </div>
-                <div class="benefit">
-                    <div class="benefit-icon">✓</div>
-                    <div>Baked with care served with pride.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta" id="ordering">
-        <div class="cta-left">
-            <h2>Life is better<br>with cheesecake.</h2>
-            <p>Whether it's a Tuesday treat or something worth celebrating, I'd love to make it sweet for you.</p>
-            <a href="mailto:hello@reprisebakery.com" class="btn btn-terracotta">Place an Order</a>
-        </div>
-        <img src="assets/mock-cta-slice.jpg" alt="Cheesecake slice" class="cta-image">
-    </section>
-
-    <!-- FOOTER -->
-    <footer id="contact">
-        <div class="footer-wrapper">
-            <div class="footer-section">
-                <div class="footer-logo">
-                    <img src="assets/reprise-logo.png" alt="Reprise Bakery">
-                </div>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#cheesecakes">Cheesecakes</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#ordering">Ordering</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Menu</h4>
-                <ul>
-                    <li><a href="#cheesecakes">Cheesecakes</a></li>
-                    <li><a href="#cheesecakes">About</a></li>
-                    <li><a href="#cheesecakes">Ordering</a></li>
-                    <li><a href="#cheesecakes">Special Orders</a></li>
-                    <li><a href="#cheesecakes">Custom</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Follow Along</h4>
-                <ul>
-                    <li><a href="#instagram">📷 @reprise.bakery</a></li>
-                    <li><a href="#instagram">Instagram</a></li>
-                    <li><a href="#email">📧 hello@reprisebakery.com</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Let's Stay in Touch</h4>
-                <p class="footer-description">Be the first to know about new flavors, specials and sweet things ahead.</p>
-                <input type="email" class="email-input" placeholder="Your email address">
-                <a href="#" class="btn btn-terracotta" style="width: 100%; text-align: center;">Subscribe</a>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2024 Reprise Bakery | A Taste Worth Repeating</p>
-        </div>
-    </footer>
 </body>
 </html>
