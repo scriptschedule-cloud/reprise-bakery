@@ -1,0 +1,19 @@
+# ---- local working files, deliberately NOT published to the website ----
+
+# design reference and the bakery's own source photos
+reference/
+assets/originals/
+cards/
+
+# internal build notes (would otherwise be readable at reprisebakery.com/README.txt)
+README.txt
+
+# oversized exports kept for future use
+assets/logo-highres.png
+assets/icons/*-2000px.png
+
+# gallery photos not currently placed on a page
+assets/gallery/photo-01.jpg
+assets/gallery/photo-08.jpg
+
+.DS_Store
