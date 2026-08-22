@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reprise Bakery - Macro-Balanced Cheesecakes | Georgetown, TX</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #F5F1ED;
+            --light-sage: #A8B899;
+            --sage: #8B9E7D;
+            --rose-gold: #C8876B;
+            --dark-brown: #3D3D3D;
+            --white: #FFFFFF;
+            --text-light: #666666;
+            --border-light: #E8E4E0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Georgia', 'Garamond', serif;
+            background-color: var(--cream);
+            color: var(--dark-brown);
+            line-height: 1.6;
+        }
+
+        /* Top Banner */
+        .banner {
+            background-color: var(--sage);
+            color: var(--white);
+            text-align: center;
+            padding: 0.7rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            font-family: 'Trebuchet MS', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--dark-brown);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            font-family: 'Trebuchet MS', sans-serif;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-family: 'Trebuchet MS', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--rose-gold);
+        }
+
+        .cart {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            background-color: var(--cream);
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .cart-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 3rem;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: var(--white);
+        }
+
+        .hero-text h1 {
+            font-size: 3.8rem;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--dark-brown);
+            letter-spacing: -1px;
+        }
+
+        .hero-text p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-subtext {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--rose-gold);
+            margin-top: 1rem;
+            font-family: 'Georgia', serif;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.9rem 1.8rem;
+            text-decoration: none;
+            border: 2px solid;
+            font-family: 'Trebuchet MS', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--rose-gold);
+            color: var(--white);
+            border-color: var(--rose-gold);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-brown);
+            border-color: var(--dark-brown);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--rose-gold);
+            border-color: var(--rose-gold);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--rose-gold);
+            color: var(--white);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 5rem 2rem;
+            background-color: var(--cream);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .story-text h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: var(--dark-brown);
+            letter-spacing: -0.5px;
+        }
+
+        .story-text p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .story-tagline {
+            font-size: 0.95rem;
+            color: var(--rose-gold);
+            font-style: italic;
+            margin-top: 1rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .story-accent {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(200,135,107,0.1) 0%, rgba(139,158,125,0.1) 100%);
+            border-radius: 8px;
+        }
+
+        /* Features Grid */
+        .features {
+            padding: 4rem 2rem;
+            background-color: var(--white);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-family: 'Trebuchet MS', sans-serif;
+            color: var(--dark-brown);
+        }
+
+        .feature-box p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 5rem 2rem;
+            background-color: var(--cream);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: var(--dark-brown);
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .flavors-intro {
+            font-size: 1.1rem;
+            color: var(--dark-brown);
+            line-height: 1.8;
+            margin: 2rem 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, rgba(200,135,107,0.1) 0%, rgba(139,158,125,0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.8rem;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--dark-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .product-link {
+            color: var(--rose-gold);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-family: 'Trebuchet MS', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .product-link:hover {
+            color: var(--dark-brown);
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--rose-gold) 0%, var(--sage) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 2px 0 0 2px;
+            font-size: 0.9rem;
+            font-family: 'Trebuchet MS', sans-serif;
+        }
+
+        .newsletter-form button {
+            padding: 1rem 1.8rem;
+            background-color: var(--dark-brown);
+            color: var(--white);
+            border: none;
+            border-radius: 0 2px 2px 0;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Trebuchet MS', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-brown);
+            color: var(--white);
+            padding: 4rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            font-family: 'Trebuchet MS', sans-serif;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            display: block;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-credit {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: var(--rose-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .story-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .story-section {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                border-radius: 2px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner -->
+    <div class="banner">
+        ❤️ FULL-FAT INDULGENCE OR MACRO-BALANCED. CHOOSE YOUR BLISS.
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo-container">
+            <div class="logo">Reprise</div>
+            <div class="logo-text">
+                <span>BAKERY</span>
+                <span>EST. 2024</span>
+            </div>
+        </div>
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#flavors">FLAVORS</a></li>
+            <li><a href="#story">STORY</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+            <li><div class="cart"><span class="cart-icon">🛒</span> <span>0</span></div></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h1>That moment when everyone orders dessert and you almost do?<br>Then you stop yourself?</h1>
+            <p>We fixed that. Reprise creates cheesecakes—full-fat indulgence or macro-balanced high-protein. You choose. Have the dessert.</p>
+            <div class="hero-buttons">
+                <a href="#flavors" class="btn btn-primary">See Our Flavors</a>
+                <a href="#story" class="btn btn-secondary">Our Story</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="images/hero-cheesecake.png" alt="Beautiful naked cheesecake with fresh berries">
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section" id="story">
+        <div class="story-text">
+            <h2>Baking has always been my happy place.</h2>
+            <p>It's the thing that centers me when life feels overwhelming. I wanted to create something that brings other people that same feeling.</p>
+            <p>Reprise is cheesecakes made with care—full-fat for pure indulgence, or macro-balanced high-protein for those who want both. You shouldn't have to choose between what you love and the person you want to be.</p>
+            <p class="story-tagline">Have the dessert. You deserve it.</p>
+        </div>
+        <div class="story-accent">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🍰</div>
+            <p style="color: var(--text-light); font-size: 0.95rem;">Made with care,<br>served with love</p>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-box">
+                <div class="feature-icon">🧁</div>
+                <h3>Full-Fat Options</h3>
+                <p>Rich, creamy, indulgent cheesecakes made for pure enjoyment.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">💪</div>
+                <h3>Macro-Balanced</h3>
+                <p>High-protein, low/no sugar options using premium allulose.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">🌟</div>
+                <h3>You Choose</h3>
+                <p>Most flavors available in both full-fat and macro versions.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">❤️</div>
+                <h3>No Compromise</h3>
+                <p>Taste amazing AND support your goals. Both matter.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">✨</div>
+                <h3>Handmade</h3>
+                <p>Small batches, made fresh to order with premium ingredients.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="flavors">
+        <div class="section-header">
+            <h2>Our Flavors</h2>
+        </div>
+
+        <div class="flavors-intro">
+            <strong>Classic New York.</strong> Biscoff Cookie Butter. Espresso Biscotti. Toasted Coconut. Plus rotating seasonal flavors like Tiramisu and Thai Tea.<br><br>
+            All made full-fat and indulgent. Most also available in macro-balanced, high-protein, no-sugar options. Because Reprise makes cheesecakes that let you have it all—the taste, the texture, the joy. No compromise.
+        </div>
+
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/classic-ny.jpg" alt="Classic New York Cheesecake">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Classic New York</div>
+                    <div class="product-description">Timeless elegance. Creamy, smooth, pure cheesecake bliss.</div>
+                    <a href="mailto:reprisebakery@gmail.com" class="product-link">ORDER NOW →</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/espresso-biscotti.jpg" alt="Espresso Biscotti Cheesecake">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Espresso Biscotti</div>
+                    <div class="product-description">Bold, sophisticated coffee-lover's dream.</div>
+                    <a href="mailto:reprisebakery@gmail.com" class="product-link">ORDER NOW →</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/toasted-coconut.jpg" alt="Toasted Coconut Cheesecake">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Toasted Coconut</div>
+                    <div class="product-description">Tropical escape with a sophisticated twist.</div>
+                    <a href="mailto:reprisebakery@gmail.com" class="product-link">ORDER NOW →</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, rgba(200,135,107,0.2) 0%, rgba(139,158,125,0.2) 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;">
+                    <div style="font-size: 3.5rem;">🍪</div>
+                    <div style="font-size: 1.2rem; font-weight: 600; color: var(--dark-brown); text-align: center; font-family: 'Trebuchet MS', sans-serif; letter-spacing: 1px;">COMING SOON</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Biscoff Cookie Butter</div>
+                    <div class="product-description">Pure indulgence. Sweet, smooth, irresistible.</div>
+                    <a href="mailto:reprisebakery@gmail.com" class="product-link">NOTIFY ME →</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/tiramisu.jpg" alt="Tiramisu Cheesecake">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Tiramisu</div>
+                    <div class="product-description">Classic Italian elegance meets creamy cheesecake.</div>
+                    <a href="mailto:reprisebakery@gmail.com" class="product-link">ORDER NOW →</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, rgba(200,135,107,0.2) 0%, rgba(139,158,125,0.2) 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;">
+                    <div style="font-size: 3.5rem;">🍵</div>
+                    <div style="font-size: 1.2rem; font-weight: 600; color: var(--dark-brown); text-align: center; font-family: 'Trebuchet MS', sans-serif; letter-spacing: 1px;">COMING SOON</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Thai Tea (Seasonal)</div>
+                    <div class="product-description">Exotic, floral, unexpectedly perfect.</div>
+                    <a href="mailto:reprisebakery@gmail.com" class="product-link">NOTIFY ME →</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/minis.jpg" alt="Mini Reprise Cheesecakes">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Mini Reprises</div>
+                    <div class="product-description">Individual-sized perfection for any occasion.</div>
+                    <a href="mailto:reprisebakery@gmail.com" class="product-link">ORDER NOW →</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/texture-close-up.jpg" alt="Cheesecake layers detail">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Custom Orders</div>
+                    <div class="product-description">Dream it. We'll bake it. All dietary needs welcome.</div>
+                    <a href="mailto:reprisebakery@gmail.com" class="product-link">REQUEST CUSTOM →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter" id="contact">
+        <div class="newsletter-content">
+            <h2>Have the dessert.</h2>
+            <p>Join our community for new flavor drops, special offers, and macro-balanced inspiration.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing! Check your email.'); this.reset();">
+                <input type="email" placeholder="Your email" required>
+                <button type="submit">SUBSCRIBE</button>
+            </form>
+            <p style="font-size: 0.85rem; margin-top: 1rem; opacity: 0.9;">No spam, just good vibes & delicious cheesecake updates.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>ORDER</h4>
+                <ul>
+                    <li><a href="mailto:reprisebakery@gmail.com">Email to Order</a></li>
+                    <li><a href="#flavors">View Flavors</a></li>
+                    <li><a href="#contact">Get Updates</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>ABOUT</h4>
+                <ul>
+                    <li><a href="#story">Our Story</a></li>
+                    <li><a href="#flavors">Our Flavors</a></li>
+                    <li><a href="mailto:reprisebakery@gmail.com">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>CONNECT</h4>
+                <div class="social-links">
+                    <a href="https://instagram.com/reprisebakery" target="_blank" title="Instagram">📷</a>
+                    <a href="https://facebook.com/reprisebakery" target="_blank" title="Facebook">f</a>
+                    <a href="mailto:reprisebakery@gmail.com" title="Email">✉️</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>LOCATION</h4>
+                <p style="font-size: 0.9rem; opacity: 0.8;">Georgetown, TX</p>
+                <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 1rem;">
+                    <a href="mailto:reprisebakery@gmail.com" style="color: var(--white); text-decoration: underline;">reprisebakery@gmail.com</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-credit">© 2024 Reprise Bakery. A taste worth repeating.</div>
+            <div style="font-size: 0.9rem;">Handmade in Georgetown, Texas</div>
+        </div>
+    </footer>
+
+</body>
+</html>
